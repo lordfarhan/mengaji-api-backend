@@ -9,8 +9,7 @@ const validated = (req, res, next) => {
 
 	if (!errors.isEmpty()) {
 		return res.status(422).json({
-			status: false,
-			message: errors.array(),
+			message: errors.array().join(", "),
 		});
 	}
 	next();
