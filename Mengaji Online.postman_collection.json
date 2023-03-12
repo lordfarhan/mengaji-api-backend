@@ -1,0 +1,563 @@
+{
+	"info": {
+		"_postman_id": "7c647713-8547-49c8-a6e5-3f9b7c6743c7",
+		"name": "Mengaji Online",
+		"description": "Mengaji online test purpose",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5791705"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "Get Book List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/books?page=1&limit=2&order=title:desc,author:asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "default 1"
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"description": "default 10"
+								},
+								{
+									"key": "order",
+									"value": "title:desc,author:asc",
+									"description": "use key pair as order, use comma if it's multiple, default order by _id desc"
+								}
+							]
+						},
+						"description": "Get all books from collection. It returns with paginated data. Order query param is a string with comma separated key:value pairs."
+					},
+					"response": [
+						{
+							"name": "Get Book List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/books?page=1&limit=2&order=title:desc,author:asc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										},
+										{
+											"key": "order",
+											"value": "title:desc,author:asc",
+											"description": "use key pair as order, use comma if it's multiple"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "591"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24f-fciPscHhYts9kbeyo1qwkcBMIoE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 Mar 2023 10:34:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Books fetched successfully\",\n    \"books\": [\n        {\n            \"_id\": \"640daa464c54181562dcff95\",\n            \"title\": \"Tafsir Quran\",\n            \"author\": \"Ibn Muhammad Sam’ani\",\n            \"authorYearOfDeath\": 489,\n            \"tags\": [\n                \"ulum\",\n                \"quran\",\n                \"sunni\",\n                \"tafsir\"\n            ],\n            \"publishers\": [\n                \"یاسربنإبراھیموغنیمبنعباسبنغنیم\",\n                \"دارالوطن،الریاض-السعودیة\"\n            ],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"640da9cf4c54181562dcff93\",\n            \"title\": \"Mukhtasar Tabyin\",\n            \"author\": \"Ibn Najah Andalusi\",\n            \"authorYearOfDeath\": 496,\n            \"tags\": [\n                \"qiraat\",\n                \"quran\",\n                \"tajwid\"\n            ],\n            \"publishers\": [\n                \"ھـ-2002م\",\n                \"مجمعالملكفھد1423-المدینةالمنورة\"\n            ],\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Search Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Tafsir Quran\",\r\n    \"author\": \"Ibn\",\r\n    \"authorYearOfDeath\": 489,\r\n    \"tags\": \"ulum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/books/search?page=1&limit=1&order=title:desc,author:asc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "default 1"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"description": "default 10"
+								},
+								{
+									"key": "order",
+									"value": "title:desc,author:asc",
+									"description": "use key pair as order, use comma if it's multiple, default order by _id desc"
+								}
+							]
+						},
+						"description": "Search book with provided field."
+					},
+					"response": [
+						{
+							"name": "[200] Search Book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Tafsir Quran\",\r\n    \"author\": \"Ibn\",\r\n    \"authorYearOfDeath\": 489,\r\n    \"tags\": \"ulum\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/books/search?page=1&limit=1&order=title:desc,author:asc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books",
+										"search"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "order",
+											"value": "title:desc,author:asc",
+											"description": "use key pair as order, use comma if it's multiple"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "348"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15c-JffbIRkree5L7zfwxWA2Sg5eOkU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 Mar 2023 10:22:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Successful fetch searched books\",\n    \"books\": [\n        {\n            \"_id\": \"640d9eb8b7abcdb01aa2fe4a\",\n            \"title\": \"Tafsir Quran\",\n            \"author\": \"Ibn Muhammad Sam’ani\",\n            \"authorYearOfDeath\": 489,\n            \"tags\": [\n                \"ulum\",\n                \"quran\",\n                \"sunni\",\n                \"tafsir\"\n            ],\n            \"publishers\": [\n                \"یاسربنإبراھیموغنیمبنعباسبنغنیم\",\n                \"دارالوطن،الریاض-السعودیة\"\n            ],\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Mukhtasar Tabyin\",\r\n    \"author\": \"Ibn Najah Andalusi\",\r\n    \"authorYearOfDeath\": 496,\r\n    \"tags\": \"QIRAAT :: QURAN :: TAJWID\",\r\n    \"publishers\": \"ھـ - 2002 م :: مجمع الملك فھد 1423 - المدینة المنورة\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/books/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								"add"
+							]
+						},
+						"description": "Add new book. All field is required."
+					},
+					"response": [
+						{
+							"name": "[200] Add Book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Mukhtasar Tabyin\",\r\n    \"author\": \"Ibn Najah Andalusi\",\r\n    \"authorYearOfDeath\": 496,\r\n    \"tags\": \"QIRAAT :: QUR AN :: TAJWID\",\r\n    \"publisher\": \"ھـ - 2002 م :: مجمع الملك فھد 1423 - المدینة المنورة\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/books/add",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "301"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12d-T+so2E7zmn+esoRTndywhnCuTk4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 Mar 2023 09:06:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book created successfully\",\n    \"book\": {\n        \"title\": \"Mukhtasar Tabyin\",\n        \"author\": \"Ibn Najah Andalusi\",\n        \"authorYearOfDeath\": 496,\n        \"tags\": [\n            \"qiraat\",\n            \"quran\",\n            \"tajwid\"\n        ],\n        \"publisher\": \"ھـ - 2002 م :: مجمع الملك فھد 1423 - المدینة المنورة\",\n        \"_id\": \"640d96219fd744e2416b4b22\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit Book",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"640d96219fd744e2416b4b22\",\r\n    \"title\": \"Mukhtasar Tabyin\",\r\n    \"author\": \"Ibn Najah Andalusi\",\r\n    \"authorYearOfDeath\": 496,\r\n    \"tags\": \"QIRAAT :: QURAN :: TAJWID\",\r\n    \"publisher\": \"ھـ - 2002 م :: مجمع الملك فھد 1423 - المدینة المنورة\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/books/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								"edit"
+							]
+						},
+						"description": "Edit book with provided data. Not all data is required, only the provided field is updated."
+					},
+					"response": [
+						{
+							"name": "[200] Edit Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"640d96219fd744e2416b4b22\",\r\n    \"title\": \"Mukhtasar Tabyin\",\r\n    \"author\": \"Ibn Najah Andalusi\",\r\n    \"authorYearOfDeath\": 496,\r\n    \"tags\": \"QIRAAT :: QURAN :: TAJWID\",\r\n    \"publisher\": \"ھـ - 2002 م :: مجمع الملك فھد 1423 - المدینة المنورة\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/books/edit",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books",
+										"edit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "301"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12d-KDgI7kCZFFUF4QrHs6ZoUz8xa0E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 Mar 2023 09:25:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book updated successfully\",\n    \"book\": {\n        \"_id\": \"640d96219fd744e2416b4b22\",\n        \"title\": \"Mukhtasar Tabyin\",\n        \"author\": \"Ibn Najah Andalusi\",\n        \"authorYearOfDeath\": 496,\n        \"tags\": [\n            \"qiraat\",\n            \"quran\",\n            \"tajwid\"\n        ],\n        \"publisher\": \"ھـ - 2002 م :: مجمع الملك فھد 1423 - المدینة المنورة\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"640d93d6f711fc1f88728d02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/books/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"books",
+								"delete"
+							]
+						},
+						"description": "Delete permanently book from database. It requires ID that is provided in request body."
+					},
+					"response": [
+						{
+							"name": "[200] Delete Book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"640d93d6f711fc1f88728d02\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/books/delete",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books",
+										"delete"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-2sU+wH8LsO2HgYqDa0daGODIV30\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 12 Mar 2023 09:01:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book deleted successfully\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Book collection module"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
